@@ -1,0 +1,14 @@
+if(isset($_GET['t']))
+{
+    if($_GET['t']=="1")
+    {
+        $sel1=$con->query("select * from emergecy_contact where uid='$em' and st='1'");
+        $rc=mysqli_fetch_row($sel1);
+        $item="$rc[2],$rc[3],$rc[4]";
+        $t="Msg From BeSafe!! $rdata[1] in Trouble, Trace the User: http://trinitytechnology.in/auto_location/Auto_Location_Update/index.php?cid=$em";
+        echo "<script language='javascript'> var win = window.open('http://msgbox.in/httpapi/smsapi?uname=Trinity&password=trinity&sender=TRNITY&receiver=$item&route=TA&msgtype=1&sms=$t', '1366002941508',  'width=100,height=100,left=375,top=330','_blank');
+           setTimeout(function(){
+                win.close()
+            }, 6000);</script>";
+            header("Refresh: 15;url=index.php");
+    }
